@@ -15,7 +15,7 @@ if 'USE_SETUPTOOLS' in os.environ:
 if USE_SETUPTOOLS is False:
     from distutils.core import setup
 
-README  = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
+README  = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 LICENSE = open(os.path.join(os.path.dirname(__file__), 'LICENSE')).read()
 
 # Tell distutils to put the data_files in platform-specific installation
@@ -33,8 +33,6 @@ for dirpath, dirnames, filenames in os.walk(DATA_PATH, topdown=True):
         if dirname.startswith('.'): del dirnames[i]
     if filenames:
         DATA_FILES.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
-
-print DATA_FILES
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
