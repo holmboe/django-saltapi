@@ -44,7 +44,7 @@ setup(
     license = LICENSE,
     description = 'This Django app serves as the REST API for Salt.',
     long_description = README,
-    url = 'http://www.example.com/',
+    url = 'https://github.com/holmboe/django-saltapi',
     author = 'Henrik Holmboe',
     author_email = 'henrik@holmboe.se',
     install_requires=open('requirements.txt').readlines(),
