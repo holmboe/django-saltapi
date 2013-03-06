@@ -1,0 +1,7 @@
+include AUTHORS
+include LICENSE
+include README.txt
+include requirements.txt
+recursive-include django_saltapi/templates *
+recursive-include django_saltapi/static *
+recursive-include docs *

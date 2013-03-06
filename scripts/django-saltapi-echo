@@ -1,0 +1,8 @@
+#!/bin/bash
+
+url=${SALT_URL:="http://salt/api/salt/echo/"}
+tgt="$1"
+shift
+arg="$@"
+
+curl -sSi $url$tgt/$arg/; echo
