@@ -20,7 +20,7 @@ This package comes with some caveats. This app compared to salt-api:
    wrapper or input snarfed from the URL, whereas salt-api supports
    other data formats
 
- - this app only supports JSON data output
+ - this app supports only JSON data output
 
 .. note:: Currently the API does not require authentication and two
           API functions are exposed without CSRF protection, though
@@ -58,11 +58,11 @@ Usage
 
 1. Visit http://salt/api/salt/ to view the default static HTML page.
 
-2. Issue a Salt ping to all minions via the API wrapper::
+2. Issue a Salt ping to all minions via the Salt API wrapper::
 
       django-saltapi '*' test.ping
 
-3. Issue a Salt ping via explicitly exposed functions::
+3. Issue a Salt ping and echo via explicitly exposed API functions::
 
       django-saltapi-ping all
       django-saltapi-echo all x
