@@ -7,4 +7,4 @@ fun="$2"
 shift; shift
 arg="$@"
 
-curl -sSi $url -d client="$client" -d tgt="$tgt" -d fun="$fun" -d arg="$arg"; echo
+curl -sS $url -d client="$client" -d tgt="$tgt" -d fun="$fun" -d arg="$arg"; echo

@@ -5,4 +5,4 @@ tgt="$1"
 shift
 arg="$@"
 
-curl -sSi $url$tgt/$arg/; echo
+curl -sS $url$tgt/$arg/; echo

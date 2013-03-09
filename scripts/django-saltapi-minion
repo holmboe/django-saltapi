@@ -1,0 +1,9 @@
+#!/bin/bash
+
+url=${SALT_URL:="http://salt/api/salt/minions/"}
+if [ $# -gt 0 ]; then
+    mid="$1"
+    curl -sS ${url}${mid}/; echo
+else
+    curl -sS ${url}; echo
+fi

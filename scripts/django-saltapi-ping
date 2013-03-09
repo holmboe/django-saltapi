@@ -3,4 +3,4 @@
 url=${SALT_URL:="http://salt/api/salt/ping/"}
 tgt="$1"
 
-curl -sSi $url$tgt/; echo
+curl -sS $url$tgt/; echo

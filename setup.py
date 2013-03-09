@@ -52,6 +52,8 @@ setup(
         'scripts/django-saltapi',
         'scripts/django-saltapi-ping',
         'scripts/django-saltapi-echo',
+        'scripts/django-saltapi-job',
+        'scripts/django-saltapi-minion',
         ],
     data_files = DATA_FILES,
     classifiers = [

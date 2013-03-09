@@ -1,0 +1,9 @@
+#!/bin/bash
+
+url=${SALT_URL:="http://salt/api/salt/jobs/"}
+if [ $# -gt 0 ]; then
+    jid="$1"
+    curl -sS ${url}${jid}/; echo
+else
+    curl -sS ${url}; echo
+fi

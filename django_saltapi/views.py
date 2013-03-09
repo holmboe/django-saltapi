@@ -38,6 +38,23 @@ def echo(request, tgt, arg):
     return JsonResponse(ret)
 
 #@login_required
+def minions(request, mid):
+    client = get_salt_client()
+    ret = client.cmd(mid or '*', 'grains.items', ret='json')
+    return JsonResponse(ret)
+
+#@login_required
+def jobs(request, jid):
+    client = get_api_client()
+    lowdata = {
+        'client': 'runner',
+        'fun': 'jobs.lookup_jid' if jid else 'jobs.list_jobs',
+        'jid': jid,
+        }
+    ret = client.run(lowdata)
+    return JsonResponse(ret)
+
+#@login_required
 @csrf_exempt
 def apiwrapper(request):
     if request.method == 'POST':
