@@ -62,7 +62,11 @@ Usage
 
       django-saltapi '*' test.ping
 
-3. Issue a Salt ping and echo via explicitly exposed API functions::
+3. Try out the explicitly exposed REST API functions (see views.py)::
 
       django-saltapi-ping all
       django-saltapi-echo all x
+      django-saltapi-job
+      django-saltapi-job <jid>
+      django-saltapi-minion
+      django-saltapi-minion <mid>
