@@ -38,17 +38,33 @@ def echo(request, tgt, arg):
     return JsonResponse(ret)
 
 #@login_required
-def minions(request, mid):
+def minions_list(request):
     client = get_salt_client()
-    ret = client.cmd(mid or '*', 'grains.items', ret='json')
+    ret = client.cmd('*', 'grains.items', ret='json')
     return JsonResponse(ret)
 
 #@login_required
-def jobs(request, jid):
+def minions_details(request, tgt):
+    client = get_salt_client()
+    ret = client.cmd(tgt, 'grains.items', ret='json')
+    return JsonResponse(ret)
+
+#@login_required
+def jobs_list(request):
     client = get_api_client()
     lowdata = {
         'client': 'runner',
-        'fun': 'jobs.lookup_jid' if jid else 'jobs.list_jobs',
+        'fun': 'jobs.list_jobs',
+        }
+    ret = client.run(lowdata)
+    return JsonResponse(ret)
+
+#@login_required
+def jobs_details(request, jid):
+    client = get_api_client()
+    lowdata = {
+        'client': 'runner',
+        'fun': 'jobs.lookup_jid',
         'jid': jid,
         }
     ret = client.run(lowdata)
