@@ -59,17 +59,18 @@ def jobs(request, jid):
 def apiwrapper(request):
     if request.method == 'POST':
         form = LowdataForm(request.POST)
-    else:
+
+        if form.is_valid():
+            client = get_api_client()
+            lowdata = {
+                'client': form.cleaned_data['client'],
+                'tgt': form.cleaned_data['tgt'],
+                'fun': form.cleaned_data['fun'],
+                'arg': form.cleaned_data['arg'],
+                }
+            ret = client.run(lowdata)
+
+            return JsonResponse(ret)
+
+    elif request.method == 'GET':
         return render(request, 'index.html')
-
-    if form.is_valid():
-        client = get_api_client()
-        lowdata = {
-            'client': form.cleaned_data['client'],
-            'tgt': form.cleaned_data['tgt'],
-            'fun': form.cleaned_data['fun'],
-            'arg': form.cleaned_data['arg'],
-            }
-        ret = client.run(lowdata)
-
-        return JsonResponse(ret)
