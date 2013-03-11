@@ -2,7 +2,7 @@
 
 from django import forms
 
-class ArgumentsForm(forms.Form):
+class LowdataForm(forms.Form):
     client = forms.CharField(max_length=20,
                              initial='local',
                              widget=forms.HiddenInput())
@@ -15,7 +15,7 @@ class ArgumentsForm(forms.Form):
                           label='Arguments')
 
     def clean(self):
-        cleaned_data = super(ArgumentsForm, self).clean()
+        cleaned_data = super(LowdataForm, self).clean()
         return cleaned_data
 
 # class ModuleField(CharField):

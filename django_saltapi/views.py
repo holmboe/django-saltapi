@@ -6,7 +6,7 @@ from .control import (
     get_salt_client,
     get_api_client,
     )
-from .forms import ArgumentsForm
+from .forms import LowdataForm
 
 # Import Python libs
 import json
@@ -58,7 +58,7 @@ def jobs(request, jid):
 @csrf_exempt
 def apiwrapper(request):
     if request.method == 'POST':
-        form = ArgumentsForm(request.POST)
+        form = LowdataForm(request.POST)
     else:
         return render(request, 'index.html')
 
