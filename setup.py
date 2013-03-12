@@ -39,7 +39,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name = 'django-saltapi',
-    version = '0.7.5',
+    version = '0.7.6',
     packages = ['django_saltapi'],
     license = LICENSE,
     description = 'This Django app serves as the REST API for Salt.',
