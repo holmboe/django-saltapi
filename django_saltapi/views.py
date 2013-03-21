@@ -17,6 +17,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from django.http import HttpResponse
 
+# Import REST libs
+from rest_framework import status
+
 
 def JsonResponse(what):
     return HttpResponse(json.dumps(what), content_type='application/json')
@@ -87,6 +90,14 @@ def apiwrapper(request):
             ret = client.run(lowdata)
 
             return JsonResponse(ret)
+        else:
+            return HttpResponse(
+                content=json.dumps({
+                        'status': status.HTTP_400_BAD_REQUEST,
+                        'return': 'invalid data',
+                        }),
+                content_type='application/json',
+                status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'GET':
         return render(request, 'index.html')
