@@ -29,5 +29,6 @@ def get_api_client():
     opts = salt.config.client_config(
         settings.SALT_CONFIG['master_config']
         )
+    opts.update(output='quiet')
     client = saltapi.APIClient(opts=opts)
     return client
