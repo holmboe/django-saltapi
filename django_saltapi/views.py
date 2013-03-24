@@ -21,16 +21,11 @@ from django.http import HttpResponse
 from rest_framework import status
 
 
-def JsonResponse(content, status=None):
-    if not status:
-        return HttpResponse(
-            content=json.dumps(content),
-            content_type='application/json')
-    else:
-        return HttpResponse(
-            content=json.dumps(content),
-            content_type='application/json',
-            status=status)
+def JsonResponse(content, **kwargs):
+    return HttpResponse(
+        content=json.dumps(content),
+        content_type='application/json',
+        **kwargs)
 
 # Externally accessible functions
 
