@@ -21,8 +21,16 @@ from django.http import HttpResponse
 from rest_framework import status
 
 
-def JsonResponse(what):
-    return HttpResponse(json.dumps(what), content_type='application/json')
+def JsonResponse(content, status=None):
+    if not status:
+        return HttpResponse(
+            content=json.dumps(content),
+            content_type='application/json')
+    else:
+        return HttpResponse(
+            content=json.dumps(content),
+            content_type='application/json',
+            status=status)
 
 # Externally accessible functions
 
@@ -91,13 +99,11 @@ def apiwrapper(request):
 
             return JsonResponse(ret)
         else:
-            return HttpResponse(
-                content=json.dumps({
-                        'status': status.HTTP_400_BAD_REQUEST,
-                        'return': 'invalid data',
-                        }),
-                content_type='application/json',
-                status=status.HTTP_400_BAD_REQUEST)
+            ret = {
+                'status': status.HTTP_400_BAD_REQUEST,
+                'return': form.errors,
+                }
+            return JsonResponse(ret, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'GET':
         return render(request, 'index.html')
