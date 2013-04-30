@@ -7,12 +7,25 @@ thing wrapper around the salt-api_ package.
 
 .. _salt-api: https://github.com/saltstack/salt-api
 
+Status
+------
+
 The main motivation behind creating a Django package to interface with
-Salt is that Django is already in our software stack. And secondly,
-from our tests it seems that `salt-api` is taking a few percent CPU
-all the time, even when supposedly idle. Perhaps that will be fixed in
-a future release of salt-api but for now this package is a good
-workaround for us.
+Salt is that Django is already in our software stack. Since then
+salt-api has become more flexible in the ways it can be deployed -- it
+is now possible to deploy its `rest_cherrypy`_ module on any compliant
+WSGI server (in contrast to running `salt-api` in a separate process).
+In addition to that there is an even slimmer alternative, though with
+less features, in the `rest_wsgi`_ module. I encourage you to have a
+look at them before deciding to use django-saltapi.
+
+.. _rest_cheerypy: http://salt-api.readthedocs.org/en/latest/ref/netapis/all/saltapi.netapi.rest_cherrypy.html
+.. _rest_wsgi: http://salt-api.readthedocs.org/en/latest/ref/netapis/all/saltapi.netapi.rest_wsgi.html
+
+Since salt-api has solved most of the motivations behind the inception
+of django-saltapi it is likely that this packages raison d'etre will
+be to utilize more of the functionality in the Django REST Framework.
+Future developments will likely be towards this goal.
 
 This package comes with some caveats. This app compared to salt-api:
 
